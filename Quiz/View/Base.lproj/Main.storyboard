@@ -15,47 +15,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-rM-odp">
-                                <rect key="frame" x="83" y="287" width="248" height="135"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="Color Name">
-                                    <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-ff-KZe">
-                                <rect key="frame" x="329" y="86" width="32" height="32"/>
+                                <rect key="frame" x="311" y="74" width="60" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <state key="normal" title="i">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="sideBarAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pT1-9E-aH4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxf-01-o5I">
-                                <rect key="frame" x="83" y="474" width="248" height="135"/>
+                                <rect key="frame" x="58" y="510" width="128" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="ColorName">
-                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="TRUE">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8t-ub-L9c"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ger-7a-omK">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtZ-Fn-TD4">
+                                <rect key="frame" x="243" y="510" width="128" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="FALSE">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oyb-EG-5gg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ger-7a-omK">
                                 <rect key="frame" x="-7" y="713" width="421" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="58"/>
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1W-h2-rw1">
-                                <rect key="frame" x="-7" y="0.0" width="196" height="896"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1W-h2-rw1">
+                                <rect key="frame" x="-139" y="0.0" width="196" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
                                         <rect key="frame" x="59" y="110" width="78" height="66"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -71,29 +79,25 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23180456606217614" green="0.23180456606217614" blue="0.23180456606217614" alpha="0.92682658450704225" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="zza-Oy-ifC" firstAttribute="centerX" secondItem="z1W-h2-rw1" secondAttribute="centerX" id="6Bq-P3-YOA"/>
-                                    <constraint firstItem="zza-Oy-ifC" firstAttribute="top" secondItem="z1W-h2-rw1" secondAttribute="top" constant="110" id="nza-UA-HTS"/>
-                                    <constraint firstItem="zza-Oy-ifC" firstAttribute="leading" secondItem="z1W-h2-rw1" secondAttribute="leading" constant="59" id="t28-op-xdL"/>
-                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phQ-AO-Ohj">
+                                <rect key="frame" x="0.0" y="313" width="414" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96759303894685345" green="0.27474078652334022" blue="0.36862344866518509" alpha="0.80697073063380287" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="66"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="z1W-h2-rw1" firstAttribute="leading" secondItem="Ger-7a-omK" secondAttribute="leading" id="1I1-99-RjK"/>
-                            <constraint firstItem="z1W-h2-rw1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="9LV-iX-QIs"/>
-                            <constraint firstItem="z1W-h2-rw1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-27" id="HqB-Hf-3mq"/>
-                            <constraint firstItem="z1W-h2-rw1" firstAttribute="bottom" secondItem="Ger-7a-omK" secondAttribute="bottom" id="Pur-wY-QTp"/>
-                            <constraint firstItem="z1W-h2-rw1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="h7S-pN-AXm"/>
-                            <constraint firstAttribute="trailing" secondItem="z1W-h2-rw1" secondAttribute="trailing" constant="225" id="hH4-zT-eMs"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="score" destination="Ger-7a-omK" id="tYm-nV-aic"/>
-                        <outlet property="sidBarOutlet" destination="cC0-ff-KZe" id="5iU-oa-XKm"/>
-                        <outletCollection property="colorbuttonOutlet" destination="iHd-rM-odp" collectionClass="NSMutableArray" id="E9x-Is-5B9"/>
-                        <outletCollection property="colorbuttonOutlet" destination="qxf-01-o5I" collectionClass="NSMutableArray" id="xnR-vE-xKP"/>
+                        <outlet property="resultLabel" destination="phQ-AO-Ohj" id="UVN-KV-ghi"/>
+                        <outlet property="scoreLabelOutlet" destination="Ger-7a-omK" id="o9s-Gx-t0e"/>
+                        <outlet property="sideBarCollection" destination="cC0-ff-KZe" id="4DJ-6x-6Id"/>
+                        <outletCollection property="true_false_outlet" destination="qxf-01-o5I" collectionClass="NSMutableArray" id="aUW-Rs-xSe"/>
+                        <outletCollection property="true_false_outlet" destination="LtZ-Fn-TD4" collectionClass="NSMutableArray" id="Ush-zL-ghc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
