@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabelOutlet: UILabel!
     
     
-    var dict: [Int: UIColor] = [0: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), 1: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
+    var dict: [Int: UIColor] = [0: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), 1: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
     // colors in lower case so i can use for both uicolor names .text property
     var randomColor = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
 
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     
     func assigningTittle() {
         
-        scoreLabelOutlet.text = "\(scoreCount ?? 100)"
+        scoreLabelOutlet.text = "Score: \(scoreCount ?? 100)"
         resultLabel.text = randomColor[picked]
         resultLabel.textColor = dict[randomBg]
         
