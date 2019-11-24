@@ -11,7 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // variable
-    var scoreCount : Int?
+    var scoreCount = 0
+    var correctAnswer: Int?
+    var correctBool = "NOTHING"
     
     // IBOutlets
     @IBOutlet weak var sideBarCollection: UIButton!
@@ -21,10 +23,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabelOutlet: UILabel!
     
     
-    var dict: [Int: UIColor] = [0: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), 1: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
-    // colors in lower case so i can use for both uicolor names .text property
-    var randomColor = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
 
+    // colors in lower case so i can use for both uicolor names .text property
+    let randomColor = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
+    
+    let textColorDict : [String: UIColor] = ["red": .red, "yellow": .yellow]
     let picked = Int.random(in: 0...9)
     let randomBg = Int.random(in: 0...1)
     
@@ -38,18 +41,44 @@ class ViewController: UIViewController {
         sideBarCollection.layer.borderColor = #colorLiteral(red: 1, green: 0.2256877422, blue: 0.0854042545, alpha: 1)
         sideBarCollection.layer.cornerRadius = 10.0
         
-        
-    
     }
+    
     
     func assigningTittle() {
         
-        scoreLabelOutlet.text = "Score: \(scoreCount ?? 100)"
+        scoreLabelOutlet.text = "Score: \(scoreCount)"
         resultLabel.text = randomColor[picked]
-        resultLabel.textColor = dict[randomBg]
+        let counter = 0
+        for (key, value) in textColorDict {
+            if counter == 0 {
+                resultLabel.textColor = value
+                if resultLabel.text! == key {
+                    //test
+                    print(" \(key) and \(resultLabel.text!) the same ")
+                    correctAnswer = 0
+                  
+                } else {
+                    // test
+                    print(" \(key) and \(resultLabel.text!) not the same  ")
+                    correctAnswer = 1
+                  
+                }
+                break
+            }
+        }
+        
         
     }
     
+    
+//    func checking(correct answer: Int, sender uibutton: Int) ->Bool {
+//        if answer == uibutton {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +86,7 @@ class ViewController: UIViewController {
         uiButtonsDesigned()
         assigningTittle()
        
+        
         
     }
     
@@ -77,17 +107,20 @@ class ViewController: UIViewController {
     
     @IBAction func action(_ sender: UIButton) {
         
+        assigningTittle()
         
-        
-      
-        
-        if sender.tag == 0 {
-            
-        } else if sender.tag == 1 {
-            
+        if correctAnswer == sender.tag {
+            scoreCount += 1
+            correctBool = "True"
+            assigningTittle()
+        } else {
+            scoreCount -= 1
+            correctBool = "False"
+            assigningTittle()
         }
-        
-        
+    
+        print(correctBool)
+    
     }
     
     
