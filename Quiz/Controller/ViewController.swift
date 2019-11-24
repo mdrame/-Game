@@ -10,10 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // variable
-    var scoreCount = 0
-    var correctAnswer: Int?
-    var correctBool = "NOTHING"
+    
+   
+    // Global variables, list, dict etc
+    // colors in lower case so i can use for both uicolor names .text property
+    var randomColor: [String] = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
+
+    var textColorDict : [String: UIColor] = ["red": .red,
+                                             "yellow": .yellow,
+                                             "blue": .blue,
+                                             "pink": .gray,
+                                             "purple":.purple,
+                                             "ornage": .orange,
+                                             "skyblue": .green,
+                                             "black": .black ]
+    
+    
+    var scoreCount = 0 // keep track of how many answer user got right and wrong
+    var correctAnswer: Int? // keeps track of textColor and .text stage ( 0 / 1 )
+    var correctBool = "NOTHING" // keeping track of correctAnswer and sender.tags = 0/1
+   
+    
+    
     
     // IBOutlets
     @IBOutlet weak var sideBarCollection: UIButton!
@@ -21,15 +39,6 @@ class ViewController: UIViewController {
     
     @IBOutlet var true_false_outlet: [UIButton]!
     @IBOutlet weak var scoreLabelOutlet: UILabel!
-    
-    
-
-    // colors in lower case so i can use for both uicolor names .text property
-    let randomColor = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
-    
-    let textColorDict : [String: UIColor] = ["red": .red, "yellow": .yellow]
-    let picked = Int.random(in: 0...9)
-    let randomBg = Int.random(in: 0...1)
     
     
     // UIFunctions ( In-order to not occupy viewDidLoad func )
@@ -43,32 +52,34 @@ class ViewController: UIViewController {
         
     }
     
+    /*  assigningTittle set UIOutlet properties and keep stage of textColr and .text product */
     
     func assigningTittle() {
         
-        scoreLabelOutlet.text = "Score: \(scoreCount)"
-        resultLabel.text = randomColor[picked]
-        let counter = 0
-        for (key, value) in textColorDict {
-            if counter == 0 {
+        randomColor.shuffle() // shuffle array
+         let title = randomColor[0] // shuffle array and give the firest element
+        let shuffledTextColor = textColorDict.shuffled()
+       
+        
+        let gameStage  = 0
+        
+        for (key, value) in shuffledTextColor {
+            
+            if gameStage == 0 {
+                resultLabel.text = title
                 resultLabel.textColor = value
-                if resultLabel.text! == key {
-                    //test
-                    print(" \(key) and \(resultLabel.text!) the same ")
-                    correctAnswer = 0
-                  
-                } else {
-                    // test
-                    print(" \(key) and \(resultLabel.text!) not the same  ")
-                    correctAnswer = 1
-                  
-                }
-                break
+            }
+            if key == title { // if dictionary key and lable is or is not the same then correct answer keep satge
+                correctAnswer = 0
+            } else {
+                correctAnswer = 1
             }
         }
         
-        
-    }
+    
+      
+    
+    } // assigningTittle ends here
     
     
 //    func checking(correct answer: Int, sender uibutton: Int) ->Bool {
@@ -78,44 +89,51 @@ class ViewController: UIViewController {
 //            return false
 //        }
 //    }
-//
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         uiButtonsDesigned()
+        
         assigningTittle()
        
         
         
     }
     
-    
-    // function
-    
-    // checking to see which button was pressed only it .text propertie
-    
-    
-    
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
         
-        
+        // if button pressed slide UIView from the side
     }
     
     
-    
+    // True and False button
     @IBAction func action(_ sender: UIButton) {
         
-        assigningTittle()
-        
-        if correctAnswer == sender.tag {
+        if sender.tag == 0 && correctAnswer! == 0 { // if true
             scoreCount += 1
-            correctBool = "True"
+            correctBool = "Correct"
+            scoreLabelOutlet.text = "\(scoreCount)"
             assigningTittle()
-        } else {
+        } else if sender.tag == 1 && correctAnswer! == 1 { // if true
+            scoreCount += 1
+            correctBool = "Correct"
+            scoreLabelOutlet.text = "\(scoreCount)"
+            assigningTittle()
+        } else if sender.tag == 0 && correctAnswer! == 1 { // if false
             scoreCount -= 1
-            correctBool = "False"
+            correctBool = "Wrong"
+            scoreLabelOutlet.text = "\(scoreCount)"
+            assigningTittle()
+        } else if sender.tag == 1 && correctAnswer! == 0 { // if false
+            scoreCount -= 1
+            correctBool = "Wrong"
+            scoreLabelOutlet.text = "\(scoreCount)"
+            assigningTittle()
+        } else {                                    // default
+            correctBool = "Nothing Bro"
+            scoreLabelOutlet.text = "\(scoreCount)"
             assigningTittle()
         }
     
