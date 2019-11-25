@@ -4,13 +4,15 @@
 //
 //  Created by Mohammed Drame on 11/23/19.
 //  Copyright © 2019 Mo Drame. All rights reserved.
+
+// TODO: Add timmer in app
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    
+
    
     // Global variables, list, dict etc
     // colors in lower case so i can use for both uicolor names .text property
@@ -52,6 +54,10 @@ class ViewController: UIViewController {
         
     }
     
+    
+    @IBOutlet var countDownLabel: UILabel!
+
+  
     /*  assigningTittle set UIOutlet properties and keep stage of textColr and .text product */
     
     func assigningTittle() {
@@ -81,14 +87,9 @@ class ViewController: UIViewController {
     
     } // assigningTittle ends here
     
+
     
-//    func checking(correct answer: Int, sender uibutton: Int) ->Bool {
-//        if answer == uibutton {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
+       var count = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +98,11 @@ class ViewController: UIViewController {
         
         assigningTittle()
        
-        
+    
         
     }
+    
+
     
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
@@ -140,6 +143,11 @@ class ViewController: UIViewController {
         print(correctBool)
     
     }
+    
+    
+    
+    
+ 
     
     
     
