@@ -59,27 +59,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1W-h2-rw1">
-                                <rect key="frame" x="-139" y="0.0" width="196" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
-                                        <rect key="frame" x="59" y="110" width="78" height="66"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="66" id="UUd-uM-u08"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="17"/>
-                                        <state key="normal" title="RESET">
-                                            <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sideBarAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ik-zp-AHQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.23180456606217614" green="0.23180456606217614" blue="0.23180456606217614" alpha="0.92682658450704225" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phQ-AO-Ohj">
                                 <rect key="frame" x="0.0" y="313" width="414" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,6 +74,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1W-h2-rw1">
+                                <rect key="frame" x="-196" y="0.0" width="196" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
+                                        <rect key="frame" x="53" y="63" width="91" height="69"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="69" id="fMD-uB-SNn"/>
+                                            <constraint firstAttribute="width" constant="91" id="hum-NG-Otq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="17"/>
+                                        <state key="normal" title="RESET">
+                                            <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sideBarAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ik-zp-AHQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23180456606217614" green="0.23180456606217614" blue="0.23180456606217614" alpha="0.92682658450704225" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -104,6 +105,7 @@
                         <outlet property="resultLabel" destination="phQ-AO-Ohj" id="UVN-KV-ghi"/>
                         <outlet property="scoreLabelOutlet" destination="Ger-7a-omK" id="o9s-Gx-t0e"/>
                         <outlet property="sideBarCollection" destination="cC0-ff-KZe" id="4DJ-6x-6Id"/>
+                        <outlet property="sideBarView" destination="z1W-h2-rw1" id="R16-gU-QQy"/>
                         <outletCollection property="true_false_outlet" destination="qxf-01-o5I" collectionClass="NSMutableArray" id="aUW-Rs-xSe"/>
                         <outletCollection property="true_false_outlet" destination="LtZ-Fn-TD4" collectionClass="NSMutableArray" id="Ush-zL-ghc"/>
                     </connections>

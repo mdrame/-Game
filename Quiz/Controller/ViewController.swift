@@ -12,6 +12,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+/* track siebar button stage but its ishidden method */
 
    
     // Global variables, list, dict etc
@@ -42,6 +44,10 @@ class ViewController: UIViewController {
     @IBOutlet var true_false_outlet: [UIButton]!
     @IBOutlet weak var scoreLabelOutlet: UILabel!
     
+    @IBOutlet weak var sideBarView: UIView!
+    
+    
+    
     
     // UIFunctions ( In-order to not occupy viewDidLoad func )
     
@@ -63,14 +69,14 @@ class ViewController: UIViewController {
     func assigningTittle() {
         
         randomColor.shuffle() // shuffle array
-         let title = randomColor[0] // shuffle array and give the firest element
+         let title = randomColor[0] // shuffle array and give the first element
         let shuffledTextColor = textColorDict.shuffled()
        
         
         let gameStage  = 0
         
         for (key, value) in shuffledTextColor {
-            
+            // don't need gameStage constent at all ( Debugging ).
             if gameStage == 0 {
                 resultLabel.text = title
                 resultLabel.textColor = value
@@ -102,12 +108,26 @@ class ViewController: UIViewController {
         
     }
     
+    func showSideBar() {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.sideBarView.transform = CGAffineTransform(translationX: +self.sideBarView.frame.size.width, y: 0)
+        }
+    }
+    
+    func dismissSideBar() {
+        touchesBegan(<#T##touches: Set<UITouch>##Set<UITouch>#>, with: <#T##UIEvent?#>)
+       
+    }
+    
 
     
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
+        showSideBar()
+        sideBarCollection.isHidden =  true
+     
         
-        // if button pressed slide UIView from the side
     }
     
     
