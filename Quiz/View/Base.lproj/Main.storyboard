@@ -75,16 +75,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1W-h2-rw1">
-                                <rect key="frame" x="-196" y="0.0" width="196" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="208" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
-                                        <rect key="frame" x="53" y="63" width="91" height="69"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Oy-ifC">
+                                        <rect key="frame" x="59" y="161" width="91" height="69"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="69" id="fMD-uB-SNn"/>
-                                            <constraint firstAttribute="width" constant="91" id="hum-NG-Otq"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="17"/>
                                         <state key="normal" title="RESET">
                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -98,7 +95,11 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ZHO-GX-ff1" appends="YES" id="YQQ-CP-HMD"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="countDownLabel" destination="rbo-0k-e15" id="Ty5-wT-mtM"/>
@@ -106,11 +107,17 @@
                         <outlet property="scoreLabelOutlet" destination="Ger-7a-omK" id="o9s-Gx-t0e"/>
                         <outlet property="sideBarCollection" destination="cC0-ff-KZe" id="4DJ-6x-6Id"/>
                         <outlet property="sideBarView" destination="z1W-h2-rw1" id="R16-gU-QQy"/>
+                        <outlet property="tapGesture" destination="ZHO-GX-ff1" id="g5b-Ie-dOT"/>
                         <outletCollection property="true_false_outlet" destination="qxf-01-o5I" collectionClass="NSMutableArray" id="aUW-Rs-xSe"/>
                         <outletCollection property="true_false_outlet" destination="LtZ-Fn-TD4" collectionClass="NSMutableArray" id="Ush-zL-ghc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZHO-GX-ff1">
+                    <connections>
+                        <action selector="tapGestureTaped:" destination="BYZ-38-t0r" id="mtU-JF-fTQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>

@@ -46,6 +46,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sideBarView: UIView!
     
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     
     
@@ -95,7 +96,8 @@ class ViewController: UIViewController {
     
 
     
-       var count = 10
+    var count = 10
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,32 +105,39 @@ class ViewController: UIViewController {
         uiButtonsDesigned()
         
         assigningTittle()
-       
-    
+        // when view loads side bar button start from the side.
+        dissSideBar()
+        
         
     }
+    
+    
     
     func showSideBar() {
         
         UIView.animate(withDuration: 0.5) {
-            self.sideBarView.transform = CGAffineTransform(translationX: +self.sideBarView.frame.size.width, y: 0)
+            self.sideBarView.transform = CGAffineTransform(translationX:0, y: 0)
         }
     }
     
-    func dismissSideBar() {
-        touchesBegan(<#T##touches: Set<UITouch>##Set<UITouch>#>, with: <#T##UIEvent?#>)
-       
+    func dissSideBar() {
+        UIView.animate(withDuration: 0.5) {
+                          self.sideBarView.transform = CGAffineTransform(translationX: -205, y: 0)
+                      }
     }
+    
+  
     
 
     
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
+        
         showSideBar()
         sideBarCollection.isHidden =  true
-     
+        }
         
-    }
+    
     
     
     // True and False button
@@ -162,6 +171,15 @@ class ViewController: UIViewController {
     
         print(correctBool)
     
+    }
+    
+    
+    @IBAction func tapGestureTaped(_ sender: UITapGestureRecognizer) {
+        
+        dissSideBar()
+        sideBarCollection.isHidden = false
+        
+        
     }
     
     
