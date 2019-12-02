@@ -106,7 +106,7 @@ class ViewController: UIViewController {
     
 
     func sixtySecondTImer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
     }
     
     @objc func counting() {
@@ -114,8 +114,18 @@ class ViewController: UIViewController {
             countDownLabel.text = "Counter: \(counter)"
             counter -= 1
         } else {
-            // create a ULAlertControl tell the user that the game is over and enabling them to push restart
-            
+            // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
+            // refuse to do this inits seperate func because I wont need it anymore don't worry.
+            timer.invalidate()
+            let alert = UIAlertController(title: "Game Over", message: "Start Over", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
+            let restartGame = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
+                // Reset every UI view item to origin stage.
+                self.counter = 5
+                self.assigningTittle()
+                self.sixtySecondTImer() // if alert button is press run the timmer function
+            }
+            alert.addAction(restartGame)
+            self.present(alert, animated: true, completion: nil)
             
         }
     }
