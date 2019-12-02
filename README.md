@@ -14,7 +14,8 @@
 
 
 ### Todo:
-    * Reset Score UILable.text to 0 when game restart
-    * Write reset button funtionality
-    * Pause game when sidebar is initiated
+    * Reset Score UILable.text to 0 when game restart.
+    * Write reset button funtionality.
+    * Pause game when sidebar is initiated.
+    * Add UIProgressHud using Cocoapod when ever user get answer right and wrong.
     
