@@ -2,10 +2,10 @@
 
 #### UI/UX:
 
-<img src="fourforone.jepg" >
-<img src="one.jepg" >
-<img src="two.jepg" >
-<img src="three.jepg" >
+<img src="ui/fourforone.jepg" >
+<img src="ui/one.jepg" >
+<img src="ui/two.jepg" >
+<img src="ui/three.jepg" >
 
 
 ### Technology:
