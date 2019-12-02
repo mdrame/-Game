@@ -3,9 +3,9 @@
 #### UI/UX:
 
 <img src="ui/fourforone.jpeg" align="left">
-<img src="ui/one.jpeg" align="right">
+<img src="ui/one.jpeg" align="center">
 <img src="ui/two.jpeg" align="left">
-<img src="ui/three.jpeg" align="right">>
+<img src="ui/three.jpeg">
 
 
 ### Technology:
