@@ -30,10 +30,16 @@ class ViewController: UIViewController {
                                              "black": .black ]
     
     
+    
+    
+        
+    
+    
+    var timer = Timer() // timmer instance
     var scoreCount = 0 // keep track of how many answer user got right and wrong
     var correctAnswer: Int? // keeps track of textColor and .text stage ( 0 / 1 )
     var correctBool = "NOTHING" // keeping track of correctAnswer and sender.tags = 0/1
-   
+    var counter = 5 // counter will decrease by 1 ever time the sixtySecondTimer function runs
     
     
     
@@ -49,6 +55,10 @@ class ViewController: UIViewController {
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     
+      @IBOutlet var countDownLabel: UILabel!
+    
+    
+    
     
     // UIFunctions ( In-order to not occupy viewDidLoad func )
     
@@ -62,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBOutlet var countDownLabel: UILabel!
+  
 
   
     /*  assigningTittle set UIOutlet properties and keep stage of textColr and .text product */
@@ -95,8 +105,21 @@ class ViewController: UIViewController {
     } // assigningTittle ends here
     
 
+    func sixtySecondTImer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
+    }
     
-    var count = 10
+    @objc func counting() {
+        if counter >= 0 {
+            countDownLabel.text = "Counter: \(counter)"
+            counter -= 1
+        } else {
+            // create a ULAlertControl tell the user that the game is over and enabling them to push restart
+            
+            
+        }
+    }
+
    
 
     override func viewDidLoad() {
@@ -108,8 +131,13 @@ class ViewController: UIViewController {
         // when view loads side bar button start from the side.
         dissSideBar()
         
+         // reset timer ever time viewdIDlOAD
+        sixtySecondTImer()
+        
         
     }
+    
+    
     
     
     
@@ -128,6 +156,8 @@ class ViewController: UIViewController {
     
   
     
+    
+    
 
     
     // IBActions
@@ -140,8 +170,15 @@ class ViewController: UIViewController {
     
     
     
+    
+    
     // True and False button
     @IBAction func action(_ sender: UIButton) {
+        
+
+        timer.invalidate() // stop time when ever buttons arre press
+        counter = 5 // reset timer to 5 so timer can restart
+        sixtySecondTImer()
         
         if sender.tag == 0 && correctAnswer! == 0 { // if true
             scoreCount += 1
