@@ -80,7 +80,7 @@ class ViewController: UIViewController {
     func assigningTittle() {
         
         randomColor.shuffle() // shuffle array
-         let title = randomColor[0] // shuffle array and give the first element
+        let title = randomColor[0] // shuffle array and give the first element
         let shuffledTextColor = textColorDict.shuffled()
        
         
