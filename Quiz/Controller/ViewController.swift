@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     // Class Instances
     var api = Api()
     
+    var sideBarButton = SideBarButton()
+    
 
     // IBOutlets
     @IBOutlet weak var sideBarCollection: UIButton!
@@ -34,16 +36,7 @@ class ViewController: UIViewController {
     
     
     
-    // UIFunctions ( In-order to not occupy viewDidLoad func )
-    
-    func uiButtonsDesigned() {
-        
-        // sidde button designs
-        sideBarCollection.layer.borderWidth = 3.0
-        sideBarCollection.layer.borderColor = #colorLiteral(red: 1, green: 0.2256877422, blue: 0.0854042545, alpha: 1)
-        sideBarCollection.layer.cornerRadius = 10.0
-        
-    }
+   
     
     
   
@@ -61,14 +54,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        uiButtonsDesigned()
+        sideBarButton.uiButtonsDesigned(view: sideBarCollection)
         
         api.assigningTittle(label: resultLabel)
         // when view loads side bar button start from the side.
-        api.dissSideBar()
+        api.dissSideBar(view: sideBarView)
         
          // reset timer ever time viewdIDlOAD
-        api.sixtySecondTImer()
+        api.sixtySecondTImer(view: resultLabel)
  
     }
     
@@ -77,7 +70,7 @@ class ViewController: UIViewController {
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
         
-        api.showSideBar()
+        api.showSideBar(view: sideBarView)
         sideBarCollection.isHidden =  true
         }
         
@@ -92,7 +85,7 @@ class ViewController: UIViewController {
 
         api.timer.invalidate() // stop time when ever buttons arre press
         api.counter = 5 // reset timer to 5 so timer can restart
-        api.sixtySecondTImer()
+        api.sixtySecondTImer(view: resultLabel)
         
         if sender.tag == 0 && api.correctAnswer! == 0 { // if true
             api.scoreCount += 1
@@ -127,7 +120,7 @@ class ViewController: UIViewController {
     
     @IBAction func tapGestureTaped(_ sender: UITapGestureRecognizer) {
         
-        api.dissSideBar()
+        api.dissSideBar(view: sideBarView)
         sideBarCollection.isHidden = false
         
         

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Api {
+class Api : UIView {
     
     // colors in lower case so i can use for both uicolor names .text property
     var randomColor: [String] = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
@@ -54,8 +54,8 @@ class Api {
     } // assigningTittle ends here
     
     
-    func sixtySecondTImer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
+    func sixtySecondTImer(view: UILabel) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting(label: view)), userInfo: nil, repeats: true)
     }
     
     @objc func counting(label: UILabel) {
@@ -70,8 +70,8 @@ class Api {
             let restartGame = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
                 // Reset every UI view item to origin stage.
                 self.counter = 5
-                self.assigningTittle(label: )
-                self.sixtySecondTImer() // if alert button is press run the timmer function
+                self.assigningTittle(label: label)
+                self.sixtySecondTImer(view: label) // if alert button is press run the timmer function
             }
             alert.addAction(restartGame)
             self.present(alert, animated: true, completion: nil)
@@ -80,16 +80,16 @@ class Api {
     }
     
     
-    func showSideBar() {
+    func showSideBar(view: UIView) {
         
         UIView.animate(withDuration: 0.5) {
-            self.sideBarView.transform = CGAffineTransform(translationX:0, y: 0)
+            view.transform = CGAffineTransform(translationX:0, y: 0)
         }
     }
     
-    func dissSideBar() {
+    func dissSideBar(view: UIView) {
         UIView.animate(withDuration: 0.5) {
-                          self.sideBarView.transform = CGAffineTransform(translationX: -205, y: 0)
+                          view.transform = CGAffineTransform(translationX: -205, y: 0)
                       }
     }
     
