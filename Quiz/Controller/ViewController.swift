@@ -13,36 +13,10 @@ import UIKit
 class ViewController: UIViewController {
     
     
-/* track siebar button stage but its ishidden method */
+    // Class Instances
+    var api = Api()
+    
 
-   
-    // Global variables, list, dict etc
-    // colors in lower case so i can use for both uicolor names .text property
-    var randomColor: [String] = ["red", "yellow", "blue", "black", "orange", "skyblue", "pink", "green", "purple", "white"]
-
-    var textColorDict : [String: UIColor] = ["red": .red,
-                                             "yellow": .yellow,
-                                             "blue": .blue,
-                                             "pink": .gray,
-                                             "purple":.purple,
-                                             "ornage": .orange,
-                                             "skyblue": .green,
-                                             "black": .black ]
-    
-    
-    
-    
-        
-    
-    
-    var timer = Timer() // timmer instance
-    var scoreCount = 0 // keep track of how many answer user got right and wrong
-    var correctAnswer: Int? // keeps track of textColor and .text stage ( 0 / 1 )
-    var correctBool = "NOTHING" // keeping track of correctAnswer and sender.tags = 0/1
-    var counter = 5 // counter will decrease by 1 ever time the sixtySecondTimer function runs
-    
-    
-    
     // IBOutlets
     @IBOutlet weak var sideBarCollection: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
@@ -77,58 +51,10 @@ class ViewController: UIViewController {
   
     /*  assigningTittle set UIOutlet properties and keep stage of textColr and .text product */
     
-    func assigningTittle() {
-        
-        randomColor.shuffle() // shuffle array
-        let title = randomColor[0] // shuffle array and give the first element
-        let shuffledTextColor = textColorDict.shuffled()
-       
-        
-        let gameStage  = 0
-        
-        for (key, value) in shuffledTextColor {
-            // don't need gameStage constent at all ( Debugging ).
-            if gameStage == 0 {
-                resultLabel.text = title
-                resultLabel.textColor = value
-            }
-            if key == title { // if dictionary key and lable is or is not the same then correct answer keep satge
-                correctAnswer = 0
-            } else {
-                correctAnswer = 1
-            }
-        }
-        
     
-      
-    
-    } // assigningTittle ends here
     
 
-    func sixtySecondTImer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
-    }
     
-    @objc func counting() {
-        if counter >= 0 {
-            countDownLabel.text = "Counter: \(counter)"
-            counter -= 1
-        } else {
-            // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
-            // refuse to do this inits seperate func because I wont need it anymore don't worry.
-            timer.invalidate()
-            let alert = UIAlertController(title: "Game Over", message: "Start Over", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
-            let restartGame = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
-                // Reset every UI view item to origin stage.
-                self.counter = 5
-                self.assigningTittle()
-                self.sixtySecondTImer() // if alert button is press run the timmer function
-            }
-            alert.addAction(restartGame)
-            self.present(alert, animated: true, completion: nil)
-            
-        }
-    }
 
    
 
@@ -137,43 +63,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         uiButtonsDesigned()
         
-        assigningTittle()
+        api.assigningTittle(label: resultLabel)
         // when view loads side bar button start from the side.
-        dissSideBar()
+        api.dissSideBar()
         
          // reset timer ever time viewdIDlOAD
-        sixtySecondTImer()
-        
-        
+        api.sixtySecondTImer()
+ 
     }
-    
-    
-    
-    
-    
-    func showSideBar() {
-        
-        UIView.animate(withDuration: 0.5) {
-            self.sideBarView.transform = CGAffineTransform(translationX:0, y: 0)
-        }
-    }
-    
-    func dissSideBar() {
-        UIView.animate(withDuration: 0.5) {
-                          self.sideBarView.transform = CGAffineTransform(translationX: -205, y: 0)
-                      }
-    }
-    
-  
-    
     
     
 
-    
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
         
-        showSideBar()
+        api.showSideBar()
         sideBarCollection.isHidden =  true
         }
         
@@ -186,44 +90,44 @@ class ViewController: UIViewController {
     @IBAction func action(_ sender: UIButton) {
         
 
-        timer.invalidate() // stop time when ever buttons arre press
-        counter = 5 // reset timer to 5 so timer can restart
-        sixtySecondTImer()
+        api.timer.invalidate() // stop time when ever buttons arre press
+        api.counter = 5 // reset timer to 5 so timer can restart
+        api.sixtySecondTImer()
         
-        if sender.tag == 0 && correctAnswer! == 0 { // if true
-            scoreCount += 1
-            correctBool = "Correct"
-            scoreLabelOutlet.text = "\(scoreCount)"
-            assigningTittle()
-        } else if sender.tag == 1 && correctAnswer! == 1 { // if true
-            scoreCount += 1
-            correctBool = "Correct"
-            scoreLabelOutlet.text = "\(scoreCount)"
-            assigningTittle()
-        } else if sender.tag == 0 && correctAnswer! == 1 { // if false
-            scoreCount -= 1
-            correctBool = "Wrong"
-            scoreLabelOutlet.text = "\(scoreCount)"
-            assigningTittle()
-        } else if sender.tag == 1 && correctAnswer! == 0 { // if false
-            scoreCount -= 1
-            correctBool = "Wrong"
-            scoreLabelOutlet.text = "\(scoreCount)"
-            assigningTittle()
+        if sender.tag == 0 && api.correctAnswer! == 0 { // if true
+            api.scoreCount += 1
+            api.correctBool = "Correct"
+            scoreLabelOutlet.text = "\(api.scoreCount)"
+            api.assigningTittle(label: resultLabel)
+        } else if sender.tag == 1 && api.correctAnswer! == 1 { // if true
+            api.scoreCount += 1
+            api.correctBool = "Correct"
+            scoreLabelOutlet.text = "\(api.scoreCount)"
+            api.assigningTittle(label: resultLabel)
+        } else if sender.tag == 0 && api.correctAnswer! == 1 { // if false
+            api.scoreCount -= 1
+            api.correctBool = "Wrong"
+            scoreLabelOutlet.text = "\(api.scoreCount)"
+            api.assigningTittle(label: resultLabel)
+        } else if sender.tag == 1 && api.correctAnswer! == 0 { // if false
+            api.scoreCount -= 1
+            api.correctBool = "Wrong"
+            scoreLabelOutlet.text = "\(api.scoreCount)"
+            api.assigningTittle(label: resultLabel)
         } else {                                    // default
-            correctBool = "Nothing Bro"
-            scoreLabelOutlet.text = "\(scoreCount)"
-            assigningTittle()
+            api.correctBool = "Nothing Bro"
+            scoreLabelOutlet.text = "\(api.scoreCount)"
+            api.assigningTittle(label: resultLabel)
         }
     
-        print(correctBool)
+        print(api.correctBool)
     
     }
     
     
     @IBAction func tapGestureTaped(_ sender: UITapGestureRecognizer) {
         
-        dissSideBar()
+        api.dissSideBar()
         sideBarCollection.isHidden = false
         
         

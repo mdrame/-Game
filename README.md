@@ -14,6 +14,7 @@
 
 
 ### Todo:
+    * Make count a progrogress instead of string 
     * Reset Score UILable.text to 0 when game restart
     * Write reset button funtionality
     * Pause game when sidebar is initiated
