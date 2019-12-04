@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     
     // Class Instances
     var api = Api()
-    
     var sideBarButton = SideBarButton()
     
 
@@ -31,19 +30,40 @@ class ViewController: UIViewController {
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     
-      @IBOutlet var countDownLabel: UILabel!
+    @IBOutlet var countDownLabel: UILabel!
     
     
     
+// Timer Func Engine ( ⚙️ )
     
-   
+    var timer = Timer() // timmer instance
     
+    func sixtySecondTImer() {
+           timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
+       }
+       
+       @objc func counting() {
+        if api.counter >= 0 {
+            countDownLabel.text = "Counter: \(self.api.counter)"
+               api.counter -= 1
+           } else {
+               // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
+               // refuse to do this inits seperate func because I wont need it anymore don't worry.
+               timer.invalidate()
+               let alert = UIAlertController(title: "Game Over", message: "Start Over", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
+               let restartGame = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
+                   // Reset every UI view item to origin stage.
+                self.api.counter = 5
+                self.api.assigningTittle(label: self.resultLabel)
+                self.sixtySecondTImer() // if alert button is press run the timmer function
+               }
+               alert.addAction(restartGame)
+               self.present(alert, animated: true, completion: nil)
+               
+           }
+       }
     
-  
-
-  
-    /*  assigningTittle set UIOutlet properties and keep stage of textColr and .text product */
-    
+// Timer engie ends here.
     
     
 
@@ -54,14 +74,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        sideBarButton.uiButtonsDesigned(view: sideBarCollection)
         
+        sideBarButton.uiButtonsDesigned(view: sideBarCollection)
+        // Assiging labling  when view loads
         api.assigningTittle(label: resultLabel)
         // when view loads side bar button start from the side.
         api.dissSideBar(view: sideBarView)
         
-         // reset timer ever time viewdIDlOAD
-        api.sixtySecondTImer(view: resultLabel)
+         // start timer engine when view loads
+        self.sixtySecondTImer()
  
     }
     
@@ -70,6 +91,7 @@ class ViewController: UIViewController {
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
         
+        // show side bar when pressed and hide it!
         api.showSideBar(view: sideBarView)
         sideBarCollection.isHidden =  true
         }
@@ -83,10 +105,13 @@ class ViewController: UIViewController {
     @IBAction func action(_ sender: UIButton) {
         
 
-        api.timer.invalidate() // stop time when ever buttons arre press
+        timer.invalidate() // stop time when ever buttons arre press
         api.counter = 5 // reset timer to 5 so timer can restart
-        api.sixtySecondTImer(view: resultLabel)
+        sixtySecondTImer() // fire timmer engine
         
+        
+        // write better optimazation for this section of code
+        // Checking if text and button are on the same page basically.
         if sender.tag == 0 && api.correctAnswer! == 0 { // if true
             api.scoreCount += 1
             api.correctBool = "Correct"
@@ -112,7 +137,8 @@ class ViewController: UIViewController {
             scoreLabelOutlet.text = "\(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         }
-    
+        
+        // Test
         print(api.correctBool)
     
     }
@@ -120,6 +146,7 @@ class ViewController: UIViewController {
     
     @IBAction func tapGestureTaped(_ sender: UITapGestureRecognizer) {
         
+        // dissmiss and hide  side button when pressed
         api.dissSideBar(view: sideBarView)
         sideBarCollection.isHidden = false
         
