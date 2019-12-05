@@ -87,7 +87,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="sideBarAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ik-zp-AHQ"/>
+                                            <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytN-fn-Z1Z"/>
                                         </connections>
                                     </button>
                                 </subviews>

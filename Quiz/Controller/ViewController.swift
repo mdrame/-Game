@@ -50,9 +50,11 @@ class ViewController: UIViewController {
                // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
                // refuse to do this inits seperate func because I wont need it anymore don't worry.
                timer.invalidate()
-               let alert = UIAlertController(title: "Game Over", message: "Start Over", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
-               let restartGame = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
+               let alert = UIAlertController(title: "Game Over", message: "Start ?", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
+               let restartGame = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
                    // Reset every UI view item to origin stage.
+                self.api.scoreCount = 0
+                self.scoreLabelOutlet.text = "Score: \(self.api.scoreCount)"
                 self.api.counter = 5
                 self.api.assigningTittle(label: self.resultLabel)
                 self.sixtySecondTImer() // if alert button is press run the timmer function
@@ -78,12 +80,17 @@ class ViewController: UIViewController {
         sideBarButton.uiButtonsDesigned(view: sideBarCollection)
         // Assiging labling  when view loads
         api.assigningTittle(label: resultLabel)
-        // when view loads side bar button start from the side.
-        api.dissSideBar(view: sideBarView)
+        
         
          // start timer engine when view loads
         self.sixtySecondTImer()
  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // when view loads side bar button start from the side.
+        api.dissSideBar(view: sideBarView)
+        
     }
     
     
@@ -91,10 +98,17 @@ class ViewController: UIViewController {
     // IBActions
     @IBAction func sideBarAction(_ sender: UIButton) {
         
+        // pause game when button is hit
+        timer.invalidate()
+        
+        
         // show side bar when pressed and hide it!
         api.showSideBar(view: sideBarView)
         sideBarCollection.isHidden =  true
         }
+    
+    
+
         
     
     
@@ -115,26 +129,26 @@ class ViewController: UIViewController {
         if sender.tag == 0 && api.correctAnswer! == 0 { // if true
             api.scoreCount += 1
             api.correctBool = "Correct"
-            scoreLabelOutlet.text = "\(api.scoreCount)"
+            scoreLabelOutlet.text = "Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 1 && api.correctAnswer! == 1 { // if true
             api.scoreCount += 1
             api.correctBool = "Correct"
-            scoreLabelOutlet.text = "\(api.scoreCount)"
+            scoreLabelOutlet.text = "Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 0 && api.correctAnswer! == 1 { // if false
             api.scoreCount -= 1
             api.correctBool = "Wrong"
-            scoreLabelOutlet.text = "\(api.scoreCount)"
+            scoreLabelOutlet.text = " Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 1 && api.correctAnswer! == 0 { // if false
             api.scoreCount -= 1
             api.correctBool = "Wrong"
-            scoreLabelOutlet.text = "\(api.scoreCount)"
+            scoreLabelOutlet.text = " Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else {                                    // default
             api.correctBool = "Nothing Bro"
-            scoreLabelOutlet.text = "\(api.scoreCount)"
+            scoreLabelOutlet.text = "Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         }
         
@@ -145,13 +159,37 @@ class ViewController: UIViewController {
     
     
     @IBAction func tapGestureTaped(_ sender: UITapGestureRecognizer) {
-        
+        // start timer again
+        self.sixtySecondTImer()
         // dissmiss and hide  side button when pressed
         api.dissSideBar(view: sideBarView)
         sideBarCollection.isHidden = false
         
         
     }
+    
+
+    @IBAction func reset(_ sender: UIButton) {
+        
+        // Reset Entire Game
+        
+        api.dissSideBar(view: sideBarView)
+        sideBarCollection.isHidden = false
+
+        api.scoreCount = 0
+        api.correctBool = "NOTHING"
+        api.counter = 5
+        scoreLabelOutlet.text = "Score: \(api.scoreCount)"
+        self.sixtySecondTImer()
+        api.assigningTittle(label: resultLabel)
+        
+        print("Test")
+        
+        
+    }
+    
+    
+    
     
     
     

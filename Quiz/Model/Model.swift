@@ -66,10 +66,15 @@ class Api {
     
     func dissSideBar(view: UIView) {
         UIView.animate(withDuration: 0.5) {
-                          view.transform = CGAffineTransform(translationX: -205, y: 0)
+    view.transform = CGAffineTransform(translationX: -205, y: 0)
                       }
     }
     
+    
+    func updateUI(score: Int, correctBool: String, scoreLabel: String) {
+        
+        
+    }
     
     
     
