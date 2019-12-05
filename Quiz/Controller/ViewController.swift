@@ -41,6 +41,8 @@ class ViewController: UIViewController {
     func sixtySecondTImer() {
            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
        }
+    
+    // Function Selector function 
        
        @objc func counting() {
         if api.counter >= 0 {
