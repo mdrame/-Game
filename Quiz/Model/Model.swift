@@ -60,7 +60,7 @@ class Api {
     func showSideBar(view: UIView) {
         
         UIView.animate(withDuration: 0.5) {
-            view.transform = CGAffineTransform(translationX:0, y: 0)
+            view.transform = CGAffineTransform(translationX: +200, y: 0)
         }
     }
     

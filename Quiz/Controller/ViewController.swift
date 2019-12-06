@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
     
     
-// Timer Func Engine ( ⚙️ )
+// Timer Func Engine ( ⚙️ ) 
     
     var timer = Timer() // timmer instance
     
@@ -89,11 +89,11 @@ class ViewController: UIViewController {
  
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        // when view loads side bar button start from the side.
-        api.dissSideBar(view: sideBarView)
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        // when view loads side bar button start from the side.
+//        api.dissSideBar(view: sideBarView)
+//        
+//    }
     
     
 
