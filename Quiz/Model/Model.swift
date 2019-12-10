@@ -82,13 +82,13 @@ class Api {
         // Write a tinary operatior that will show desire backgoround colr base on your choice
         // Addimation
 //
-        UIView.animate(withDuration: 0.2, animations: {
-                uiImageView.alpha = 9.0
-             uiImageView.image = stage ? correctImage : wrongImage
-        }) { (complete) in
-            if complete {
-                UIView.animate(withDuration: 0.2) {
-                    uiImageView.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: { // run animation
+            uiImageView.alpha = 9.0 // when animation starts make sure alpha is up up 🥰
+            uiImageView.image = stage ? correctImage : wrongImage // set image base on stage
+        }) { (completed) in // run code below after first animation is completted
+            if completed {
+                UIView.animate(withDuration: 0.2) { // run another animation
+                    uiImageView.alpha = 0.0 // but this time set the opacity to 0.
                 }
             }
         }
