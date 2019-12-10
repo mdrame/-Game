@@ -82,8 +82,17 @@ class Api {
         // Write a tinary operatior that will show desire backgoround colr base on your choice
         // Addimation
 //
+        UIView.animate(withDuration: 0.2, animations: {
+                uiImageView.alpha = 9.0
+             uiImageView.image = stage ? correctImage : wrongImage
+        }) { (complete) in
+            if complete {
+                UIView.animate(withDuration: 0.2) {
+                    uiImageView.alpha = 0.0
+                }
+            }
+        }
         
-         uiImageView.image = stage ? correctImage : wrongImage
             
       
     
