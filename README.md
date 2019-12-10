@@ -21,4 +21,5 @@
     * Pause game when sidebar is initiated ✅
     * Add UIProgressHud using Cocoapod when ever user get answer right and wrong.
 
-    
+### Acknowledgement:
+   * Samuel Fellado -> iOS Dev ( Make School )
