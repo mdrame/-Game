@@ -32,41 +32,13 @@ class ViewController: UIViewController {
     
     @IBOutlet var countDownLabel: UILabel!
     
+    // HudOutlet
+    @IBOutlet weak var hudOutlet: UIImageView!
+    
+   
     
     
-// Timer Func Engine ( ⚙️ ) 
-    
-    var timer = Timer() // timmer instance
-    
-    func sixtySecondTImer() {
-           timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
-       }
-    
-    // Function Selector function 
-       
-       @objc func counting() {
-        if api.counter >= 0 {
-            countDownLabel.text = "Counter: \(self.api.counter)"
-               api.counter -= 1
-           } else {
-               // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
-               // refuse to do this inits seperate func because I wont need it anymore don't worry.
-               timer.invalidate()
-               let alert = UIAlertController(title: "Game Over", message: "Start ?", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
-               let restartGame = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
-                   // Reset every UI view item to origin stage.
-                self.api.scoreCount = 0
-                self.scoreLabelOutlet.text = "Score: \(self.api.scoreCount)"
-                self.api.counter = 5
-                self.api.assigningTittle(label: self.resultLabel)
-                self.sixtySecondTImer() // if alert button is press run the timmer function
-               }
-               alert.addAction(restartGame)
-               self.present(alert, animated: true, completion: nil)
-               
-           }
-       }
-    
+   
 // Timer engie ends here.
     
     
@@ -87,6 +59,7 @@ class ViewController: UIViewController {
          // start timer engine when view loads
         self.sixtySecondTImer()
  
+    
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -129,23 +102,32 @@ class ViewController: UIViewController {
         // write better optimazation for this section of code
         // Checking if text and button are on the same page basically.
         if sender.tag == 0 && api.correctAnswer! == 0 { // if true
+           // progressHud
+            
             api.scoreCount += 1
             api.correctBool = "Correct"
+            api.checkProgresseEngine(view: hudOutlet, correct: #imageLiteral(resourceName: "check-mark"), wrong: #imageLiteral(resourceName: "wrong (2).png"), isOn: true)
             scoreLabelOutlet.text = "Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 1 && api.correctAnswer! == 1 { // if true
+            
             api.scoreCount += 1
             api.correctBool = "Correct"
+            api.checkProgresseEngine(view: hudOutlet, correct: #imageLiteral(resourceName: "check-mark"), wrong: #imageLiteral(resourceName: "wrong (2).png")
+            , isOn: true)
             scoreLabelOutlet.text = "Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 0 && api.correctAnswer! == 1 { // if false
+           
             api.scoreCount -= 1
             api.correctBool = "Wrong"
+            api.checkProgresseEngine(view: hudOutlet, correct: #imageLiteral(resourceName: "check-mark"), wrong: #imageLiteral(resourceName: "wrong (2)"), isOn: false)
             scoreLabelOutlet.text = " Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else if sender.tag == 1 && api.correctAnswer! == 0 { // if false
             api.scoreCount -= 1
             api.correctBool = "Wrong"
+            api.checkProgresseEngine(view: hudOutlet, correct: #imageLiteral(resourceName: "check-mark.png"), wrong: #imageLiteral(resourceName: "wrong (2)"), isOn: false)
             scoreLabelOutlet.text = " Score: \(api.scoreCount)"
             api.assigningTittle(label: resultLabel)
         } else {                                    // default
@@ -189,6 +171,44 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
+    
+    
+    
+       // Timer Func Engine ( ⚙️ )
+       
+       var timer = Timer() // timmer instance
+       
+       func sixtySecondTImer() {
+              timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counting), userInfo: nil, repeats: true)
+          }
+       
+       // Function Selector function
+          
+          @objc func counting() {
+           if api.counter >= 0 {
+               countDownLabel.text = "Counter: \(self.api.counter)"
+                  api.counter -= 1
+              } else {
+                  // create a ULAlertControl tellING the user that the game is over and enabling them to push restart
+                  // refuse to do this inits seperate func because I wont need it anymore don't worry.
+                  timer.invalidate()
+                  let alert = UIAlertController(title: "Game Over", message: "Start ?", preferredStyle: .alert) // programmatic AlertCntr. Do they even have a UI type.
+                  let restartGame = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                      // Reset every UI view item to origin stage.
+                   self.api.scoreCount = 0
+                   self.scoreLabelOutlet.text = "Score: \(self.api.scoreCount)"
+                   self.api.counter = 5
+                   self.api.assigningTittle(label: self.resultLabel)
+                   self.sixtySecondTImer() // if alert button is press run the timmer function
+                  }
+                  alert.addAction(restartGame)
+                  self.present(alert, animated: true, completion: nil)
+                  
+              }
+          }
+       
     
     
     

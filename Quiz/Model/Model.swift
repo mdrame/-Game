@@ -76,10 +76,25 @@ class Api {
         
     }
     
+    // Progress Hud function
     
-    
+    func checkProgresseEngine(view uiImageView: UIImageView, correct correctImage: UIImage, wrong wrongImage: UIImage, isOn stage: Bool ) {
+        // Write a tinary operatior that will show desire backgoround colr base on your choice
+        // Addimation
+//
+        
+         uiImageView.image = stage ? correctImage : wrongImage
+            
+      
     
     
     
     
 }
+
+
+}
+    
+    
+    
+    

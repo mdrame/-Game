@@ -93,6 +93,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.23180456606217614" green="0.23180456606217614" blue="0.23180456606217614" alpha="0.92682658450704225" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5m-AS-V6P">
+                                <rect key="frame" x="83" y="299" width="240" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -103,6 +108,7 @@
                     </view>
                     <connections>
                         <outlet property="countDownLabel" destination="rbo-0k-e15" id="Ty5-wT-mtM"/>
+                        <outlet property="hudOutlet" destination="b5m-AS-V6P" id="i1P-cE-uaK"/>
                         <outlet property="resultLabel" destination="phQ-AO-Ohj" id="UVN-KV-ghi"/>
                         <outlet property="scoreLabelOutlet" destination="Ger-7a-omK" id="o9s-Gx-t0e"/>
                         <outlet property="sideBarCollection" destination="cC0-ff-KZe" id="4DJ-6x-6Id"/>
